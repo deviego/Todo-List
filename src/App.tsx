@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as C from "./App.styles";
 import "./global.css";
-import { CardLIst } from "./components/Card"
+import { CardLIst } from "./components/Card";
 
 import { Item } from "./types/Item";
 import { AddArea } from "./components/AddArea";
@@ -20,15 +20,26 @@ function App() {
     },
   ]);
 
+  const handleAddTask = (taskName: string) => {
+    let newList = [...list]
+    newList.push({
+      id: list.length + 1 ,
+      name: taskName,
+      done: false
+    })
+    setList(newList)
+  };
+
 
   return (
     <C.Container>
       <C.Area>
         <C.Header> Task List</C.Header>
 
-        <AddArea></AddArea>
-        {list.map((item, index) => (<CardLIst key={index} item={item} />))}
-        
+        <AddArea onSaved={handleAddTask}/>
+        {list.map((item, index) => (
+          <CardLIst key={index} item={item} />
+        ))}
       </C.Area>
     </C.Container>
   );
