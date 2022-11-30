@@ -28,8 +28,11 @@ function App() {
       done: false
     })
     setList(newList)
+    localStorage.setItem('tasks', JSON.stringify(newList))
   };
 
+    let getTask = localStorage.getItem('task')
+    console.log(getTask)
 
   return (
     <C.Container>

@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import * as C from './styled'
 
 type Props = {
@@ -10,7 +10,7 @@ export const AddArea = ({onSaved}: Props) => {
     const [inputText, setInputText] = useState('')
     
 
-    const handleKeyUp = (event: KeyboardEvent)=> {
+    const handleKeyUp = (event: React.KeyboardEvent)=> {
         
         if(event.code === 'Enter' && inputText!== ''){
             console.log('adicionado')
